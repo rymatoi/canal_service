@@ -10,6 +10,7 @@ from order_statistics.tables import OrderTable
 
 
 def OrdersListView(request):
+    """ Вью для отображения таблицы и графика на странице"""
     orders = Order.objects.order_by('date')
     for_graph = tuple((order.date, order.price_dollar) for order in orders)
     total = sum(order.price_dollar for order in orders)
